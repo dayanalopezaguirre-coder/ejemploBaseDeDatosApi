@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Productos;
+use App\Models\Empleado;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\EmpleadoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,3 +42,4 @@ Route::get('/productos/{id}', function (string $id) {
 Route::get('/productos/nombre/{descripcion}', function (string $descripcion) {
     return productos::where("descripcion","like","%".$descripcion."%")->get();
 });
+
