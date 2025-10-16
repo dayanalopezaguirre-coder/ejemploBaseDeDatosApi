@@ -53,43 +53,17 @@ Route::delete('/productos/eliminar', function (){
 
 Route::post('/usuario/registrar', [AuthController::class, 'registre']);
 
-Route::post('/usuario/login', [AuthController::class, 'login']);
 
-// Obtener todos los empleados
-Route::get('/empleados', function () {
-    return Empleado::all();
-});
-
-// Obtener un empleado por ID
-Route::get('/empleados/{id}', function ($id) {
-    return Empleado::find($id);
-})->middleware('auth:sanctum');
-
+// Listado de empleados existentes
+Route::get('/empleado', [EmpleadoController::class, 'index']);
 // Crear un nuevo empleado
-Route::post('/empleados/crear', function () {
-    Empleado::create([
-        'nombre_completo' => request()->nombre_completo,
-        'departamento' => request()->departamento,
-        'antiguedad' => request()->antiguedad,
-        'nomina' => request()->nomina,
-    ]);
-    return Empleado::all();
-})->middleware('auth:sanctum');
-
-// Actualizar un empleado existente
-Route::put('/empleados/editar', function () {
-    $empleado = Empleado::findOrFail(request()->id);
-    $empleado->nombre_completo = request()->nombre_completo;
-    $empleado->departamento = request()->departamento;
-    $empleado->antiguedad = request()->antiguedad;
-    $empleado->nomina = request()->nomina;
-    $empleado->save();
-    return Empleado::all();
-})->middleware('auth:sanctum');
-
+Route::post('/empleado/nuevo', [EmpleadoController::class, 'store']);
+// Mostrar detalles de un empleado específico
+Route::get('/empleado/mostrar/{empleado}', [EmpleadoController::class, 'show']);
+// Actualizar un empleado existente     
+Route::put('/empleado/actualizar/{empleado}', [EmpleadoController::class, 'update']);
 // Eliminar un empleado
-Route::delete('/empleados/eliminar', function () {
-    $empleado = Empleado::findOrFail(request()->id);
-    $empleado->delete();
-    return Empleado::all();
-})->middleware('auth:sanctum');
+Route::delete('/empleado/eliminar/{empleado}', [EmpleadoController::class, 'destroy']);
+
+
+
