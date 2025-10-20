@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('telefonos', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('numero', 15);
-            $table->unsignedBigInteger('alumno_id');
-            $table->string('tipo', 20); // Ejemplo: 'móvil', 'casa', 'trabajo'
+            $table->string('nombre_cliente');
+            $table->string('domicilio')->nullable();
+            $table->string('email')->unique();
+            $table->integer('descuento_especial')->unique();
+            $table->string('telefono')->nullable();
+
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('telefonos');
+        Schema::dropIfExists('clientes');
     }
 };

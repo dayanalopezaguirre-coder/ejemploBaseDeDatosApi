@@ -4,9 +4,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Productos;
 use App\Models\Empleado;
+use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\MatriculaController;
+use App\Http\Controllers\TelefonoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,3 +49,9 @@ Route::get('/productos/nombre/{descripcion}', function (string $descripcion) {
 
 route::get('/matriculas',[MatriculaController::class,'index'])
       ->name('matriculas.index');
+
+route::get('/alumnos',[AlumnoController::class,'index'])
+      ->name('alumnos.index');
+
+route::get('/telefonos',[TelefonoController::class,'index'])
+      ->name('telefonos.index');

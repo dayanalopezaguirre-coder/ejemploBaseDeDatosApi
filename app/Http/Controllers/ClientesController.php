@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alumno;
+use App\Models\clientes;
 use Illuminate\Http\Request;
 
-class AlumnoController extends Controller
+class ClientesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        $alumnos = Alumno::all();
-        return view('alumnos.index', compact('alumnos'));
+        //
     }
 
     /**
@@ -36,7 +34,7 @@ class AlumnoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Alumno $alumno)
+    public function show(clientes $clientes)
     {
         //
     }
@@ -44,7 +42,7 @@ class AlumnoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Alumno $alumno)
+    public function edit(clientes $clientes)
     {
         //
     }
@@ -52,7 +50,7 @@ class AlumnoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Alumno $alumno)
+    public function update(Request $request, clientes $clientes)
     {
         //
     }
@@ -60,7 +58,7 @@ class AlumnoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Alumno $alumno)
+    public function destroy(clientes $clientes)
     {
         //
     }
