@@ -12,7 +12,9 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        //
+
+         $clientes = Clientes::all();
+        return $clientes ;
     }
 
     /**
@@ -28,7 +30,15 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        clientes::create([
+            'nombre_cliente' => $request->nombre_cliente,
+            'domicilio' => $request->domicilio,
+            'email' => $request->email,
+            'descuento_especial' => $request->descuento_especial,
+            'telefono' => $request->telefono,
+        ]);
+    
+        return clientes::all();
     }
 
     /**
@@ -36,7 +46,8 @@ class ClientesController extends Controller
      */
     public function show(clientes $clientes)
     {
-        //
+    
+        return $clientes ;
     }
 
     /**
@@ -44,7 +55,8 @@ class ClientesController extends Controller
      */
     public function edit(clientes $clientes)
     {
-        //
+        $clientes = clientes::find($id);
+         return view ('Cliente.editar',compact('clientes')) ;
     }
 
     /**
@@ -52,7 +64,13 @@ class ClientesController extends Controller
      */
     public function update(Request $request, clientes $clientes)
     {
-        //
+        $clientes->nombre_cliente = $request->nombre_cliente;
+        $clientes->domicilio = $request->domicilio;
+        $clientes->email = $request->email;
+        $clientes->descuento_especial = $request->descuento_especial;
+        $clientes->telefono = $request->telefono;
+        $clientes->save();
+        return $clientes;
     }
 
     /**
@@ -60,6 +78,7 @@ class ClientesController extends Controller
      */
     public function destroy(clientes $clientes)
     {
-        //
-    }
+         $clientes->delete();
+        return clientes::all();
+}
 }

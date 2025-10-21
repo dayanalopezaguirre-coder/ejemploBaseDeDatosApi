@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Productos;
 use App\Http\Controllers\API\AuthController;
 use App\Models\Empleado;
+use app\Models\clientes;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ClientesController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -64,6 +67,17 @@ Route::get('/empleado/mostrar/{empleado}', [EmpleadoController::class, 'show']);
 Route::put('/empleado/actualizar/{empleado}', [EmpleadoController::class, 'update']);
 // Eliminar un empleado
 Route::delete('/empleado/eliminar/{empleado}', [EmpleadoController::class, 'destroy']);
+
+//listdo de clientes existentes
+Route::get('/cliente', [ClientesController::class, 'index']);
+//Crear un nuevo cliente
+Route::post('/cliente/nuevo', [ClientesController::class, 'store']);
+//Mostrar detalles de un cliente específico
+Route::get('/cliente/mostrar/{clientes}', [ClientesController::class, 'show']);
+//Actualizar un cliente existente
+Route::put('/cliente/actualizar/{clientes}', [ClientesController::class, 'update']);
+//Eliminar un cliente
+Route::delete('/cliente/eliminar/{clientes}', [ClientesController::class, 'destroy']);   
 
 
 
